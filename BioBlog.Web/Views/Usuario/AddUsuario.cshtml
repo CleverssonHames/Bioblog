@@ -1,0 +1,38 @@
+@model BioBlog.Web.Models.Entrada.Usuario.UsuarioEntrada;
+@{
+    ViewData["title"] = "Cadastro de usuário";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Cadastro de Usuário</h2>
+            <form asp-controller="Usuario" asp-action="AddUsuario">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" asp-for="Nome" >
+                    <span class="fst-italic text-danger">@Html.ValidationMessageFor(m => m.Nome)</span>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" asp-for="Email" >
+                    <span class="fst-italic text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" name="Senha" >
+                    <span class="fst-italic text-danger">@Html.ValidationMessageFor(m => m.Senha)</span>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </form>
+            @if (ViewBag.Fail == true)
+            {
+                <div class="alert alert-danger" role="alert">
+                    Ocorreu um erro ao cadastrar usuário, informar o administrador do sistema!
+                </div>
+            }
+        </div>
+    </div>
+</div>
